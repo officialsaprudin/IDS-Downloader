@@ -1,4 +1,4 @@
-// IDM Extension Background Service Worker
+// IDS Extension Background Service Worker
 const SERVER_URL = 'http://127.0.0.1:48912';
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {

@@ -1,7 +1,7 @@
 {
-  "name": "idm-downloader",
+  "name": "ids-downloader",
   "version": "1.0.0",
-  "description": "IDM Clone with YouTube Video Downloader and Browser Extension",
+  "description": "IDS Downloader with YouTube Video Downloader and Browser Extension",
   "main": "server.js",
   "type": "commonjs",
   "scripts": {

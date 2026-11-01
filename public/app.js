@@ -1,4 +1,4 @@
-// IDM Pro Desktop Client Controller
+// IDS Pro Desktop Client Controller
 let downloads = [];
 let currentFilter = 'all';
 let searchQuery = '';

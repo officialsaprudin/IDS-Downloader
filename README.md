@@ -1,12 +1,12 @@
-# IDM Downloader Pro (Windows 11)
+# IDS Downloader Pro (Windows 11)
 
-Aplikasi Download Manager mirip **Internet Download Manager (IDM)** dengan ekstensi browser Chrome/Edge yang otomatis memunculkan tombol unduhan video YouTube berdasarkan pilihan resolusi.
+Aplikasi Download Manager modern dengan ekstensi browser Chrome/Edge yang otomatis memunculkan tombol unduhan video YouTube berdasarkan pilihan resolusi dan audio MP3.
 
 ---
 
 ## 🚀 Cara Menjalankan
 
-### 1. Jalankan Aplikasi Desktop IDM
+### 1. Jalankan Aplikasi Desktop IDS
 Cukup **klik 2x file `start.bat`** di dalam folder ini.
 Aplikasi akan langsung membuka jendela desktop Windows 11 bergaya native (bebas distorsi URL bar).
 
@@ -21,19 +21,22 @@ Hanya perlu dilakukan 1 kali:
    ```
    d:\DATA SAPRUDIN\APLIKASI\ANTIGRAFITY\APLIKASI WINDOWS 11\idm-downloader\extension
    ```
-5. Selesai! Ikon IDM hijau akan muncul di toolbar peramban.
+5. Selesai! Ikon IDS hijau akan muncul di toolbar peramban.
 
 ---
 
 ## 🎬 Cara Menggunakan di YouTube
 
 1. Buka sembarang video di **YouTube**.
-2. Tombol melayang hijau **"⬇ Unduh Video Ini"** otomatis muncul di sudut kanan atas pemutar video (persis seperti IDM asli).
+2. Tombol melayang hijau **"⬇ Unduh Video Ini"** otomatis muncul di sudut kanan atas pemutar video.
 3. Klik tombol tersebut untuk melihat pilihan resolusi:
    - 🎬 **1080p Full HD** (MP4)
    - 🎬 **720p HD** (MP4)
    - 🎬 **480p Standar** (MP4)
    - 🎬 **360p Ringan** (MP4)
-   - 🎵 **Audio MP3** (Lagu)
-4. Klik resolusi yang diinginkan. Unduhan langsung diproses oleh aplikasi desktop dengan indikator kecepatan, ukuran file, dan persentase real-time.
+   - 🎵 **Audio MP3 HQ (320kbps)**
+   - 🎵 **Audio MP3 Standar (128kbps)**
+   - 🎵 **Audio M4A (Original AAC)**
+   - 🎵 **Audio WAV Lossless**
+4. Klik format yang diinginkan. Unduhan langsung diproses oleh aplikasi desktop dengan indikator kecepatan, ukuran file, dan persentase real-time.
 5. File otomatis tersimpan di folder `Downloads` Windows Anda.

@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "IDM Video Downloader",
+  "name": "IDS Video Downloader",
   "version": "1.0.0",
-  "description": "Download video YouTube langsung dengan pilihan resolusi ke aplikasi desktop IDM.",
+  "description": "Download video YouTube langsung dengan pilihan resolusi ke aplikasi desktop IDS.",
   "icons": {
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",

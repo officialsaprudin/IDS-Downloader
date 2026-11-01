@@ -1,5 +1,5 @@
 @echo off
-title IDM Downloader Pro - Desktop Server
+title IDS Downloader Pro - Desktop Server
 cd /d "%~dp0"
 
 set "NODE_CMD="
@@ -21,7 +21,7 @@ if "%NODE_CMD%"=="" (
 )
 
 echo ========================================================
-echo   IDM Downloader Pro (Windows 11)
+echo   IDS Downloader Pro (Windows 11)
 echo   Status: Aktif
 echo   URL: http://127.0.0.1:48912
 echo   (JANGAN TUTUP jendela hitam ini agar unduhan berjalan)
@@ -29,7 +29,7 @@ echo ========================================================
 
 set "EDGE_EXE=C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
 if exist "%EDGE_EXE%" (
-    start "" "%EDGE_EXE%" --app="http://127.0.0.1:48912" --window-size=1120,720 --user-data-dir="%TEMP%\idm_app_profile"
+    start "" "%EDGE_EXE%" --app="http://127.0.0.1:48912" --window-size=1120,720 --user-data-dir="%TEMP%\ids_app_profile"
 ) else (
     start http://127.0.0.1:48912
 )

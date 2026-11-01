@@ -43,7 +43,7 @@ btnQuickDownload.addEventListener('click', async () => {
     return;
   }
 
-  showMsg('Mengirim unduhan ke IDM Desktop...', true);
+  showMsg('Mengirim unduhan ke IDS Desktop...', true);
 
   try {
     const res = await fetch(`${SERVER_URL}/api/download`, {
@@ -54,12 +54,12 @@ btnQuickDownload.addEventListener('click', async () => {
 
     const data = await res.json();
     if (res.ok && data.success) {
-      showMsg('✅ Berhasil dikirim ke IDM Desktop!', true);
+      showMsg('✅ Berhasil dikirim ke IDS Desktop!', true);
     } else {
       showMsg(`❌ Gagal: ${data.error || 'Server error'}`, false);
     }
   } catch (e) {
-    showMsg('⚠️ Gagal terhubung ke IDM Desktop! Pastikan aplikasi IDM aktif.', false);
+    showMsg('⚠️ Gagal terhubung ke IDS Desktop! Pastikan aplikasi IDS aktif.', false);
   }
 });
 

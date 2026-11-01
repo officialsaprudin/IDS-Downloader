@@ -445,7 +445,7 @@ const server = http.createServer((req, res) => {
 
 server.listen(PORT, () => {
   console.log(`====================================================`);
-  console.log(`  IDM Downloader Desktop Server berjalan di:`);
+  console.log(`  IDS Downloader Server berjalan di:`);
   console.log(`  http://127.0.0.1:${PORT}`);
   console.log(`  Folder Unduhan: ${downloadDir}`);
   console.log(`====================================================`);

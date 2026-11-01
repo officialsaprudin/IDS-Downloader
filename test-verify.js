@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 
-console.log('--- RUNNING IDM CLONE VERIFICATION TESTS ---');
+console.log('--- RUNNING IDS DOWNLOADER VERIFICATION TESTS ---');
 
 // 1. Verify Binaries
 const ytdlp = path.join(__dirname, 'bin', 'yt-dlp.exe');
