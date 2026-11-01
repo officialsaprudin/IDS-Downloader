@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IDM Pro - Pengelola Unduhan & YouTube Downloader</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="app-brand">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/></svg>
+        </div>
+        <div class="brand-text">
+          <h2>IDM Pro</h2>
+          <span>Windows Edition</span>
+        </div>
+      </div>
+
+      <nav class="nav-menu">
+        <button class="nav-item active" data-filter="all">
+          <span class="nav-icon">📦</span>
+          <span>Semua Unduhan</span>
+          <span class="count-badge" id="count-all">0</span>
+        </button>
+        <button class="nav-item" data-filter="downloading">
+          <span class="nav-icon">⚡</span>
+          <span>Mengunduh</span>
+          <span class="count-badge active-count" id="count-downloading">0</span>
+        </button>
+        <button class="nav-item" data-filter="completed">
+          <span class="nav-icon">✅</span>
+          <span>Selesai</span>
+          <span class="count-badge" id="count-completed">0</span>
+        </button>
+        <button class="nav-item" data-filter="error">
+          <span class="nav-icon">⚠️</span>
+          <span>Gagal / Dibatalkan</span>
+          <span class="count-badge" id="count-error">0</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="server-status-card">
+          <div class="status-indicator online"></div>
+          <div class="status-info">
+            <p class="status-title">Server IDM Aktif</p>
+            <p class="status-desc" id="status-port">Port: 48912</p>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <!-- Top Action Bar -->
+      <header class="top-bar">
+        <div class="action-buttons">
+          <button class="btn btn-primary" id="btn-show-add-modal">
+            <svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+            <span>Tambah Unduhan</span>
+          </button>
+          <button class="btn btn-secondary" id="btn-show-ext-modal">
+            <svg viewBox="0 0 24 24"><path d="M20.5 11H19V7c0-1.1-.9-2-2-2h-4V3.5C13 2.12 11.88 1 10.5 1S8 2.12 8 3.5V5H4c-1.1 0-1.99.9-1.99 2v3.8H3.5c1.49 0 2.7 1.21 2.7 2.7s-1.21 2.7-2.7 2.7H2V20c0 1.1.9 2 2 2h3.8v-1.5c0-1.49 1.21-2.7 2.7-2.7 1.49 0 2.7 1.21 2.7 2.7V22H17c1.1 0 2-.9 2-2v-4h1.5c1.38 0 2.5-1.12 2.5-2.5s-1.12-2.5-2.5-2.5z"/></svg>
+            <span>Pasang Ekstensi Browser</span>
+          </button>
+          <button class="btn btn-secondary" id="btn-open-folder">
+            <svg viewBox="0 0 24 24"><path d="M20 6h-8l-2-2H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 12H4V8h16v10z"/></svg>
+            <span>Buka Folder</span>
+          </button>
+        </div>
+
+        <div class="search-box">
+          <input type="text" id="search-input" placeholder="Cari file atau URL...">
+        </div>
+      </header>
+
+      <!-- Downloads List -->
+      <section class="downloads-container">
+        <div id="downloads-list" class="downloads-list">
+          <!-- Dynamically populated -->
+        </div>
+
+        <!-- Empty state placeholder -->
+        <div id="empty-state" class="empty-state">
+          <div class="empty-icon">⬇️</div>
+          <h3>Belum ada unduhan</h3>
+          <p>Klik tombol <strong>+ Tambah Unduhan</strong> atau buka YouTube di browser dengan ekstensi IDM aktif untuk mulai mengunduh.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Add Download Modal -->
+  <div id="add-modal" class="modal-overlay">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>Tambah Unduhan Baru</h3>
+        <button class="btn-close" id="btn-close-add-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>URL Video YouTube atau Tautan File Langsung:</label>
+          <input type="text" id="input-url" placeholder="https://www.youtube.com/watch?v=... atau https://example.com/file.zip">
+        </div>
+        <div class="form-group">
+          <label>Pilihan Resolusi / Kualitas:</label>
+          <select id="select-res">
+            <option value="1080p">1080p Full HD (MP4)</option>
+            <option value="720p" selected>720p HD (MP4)</option>
+            <option value="480p">480p Standar (MP4)</option>
+            <option value="360p">360p Ringan (MP4)</option>
+            <option value="audio">Audio Only (MP3)</option>
+            <option value="best">Kualitas Tertinggi Otomatis</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" id="btn-cancel-add">Batal</button>
+        <button class="btn btn-primary" id="btn-submit-download">Mulai Unduh</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Extension Installation Guide Modal -->
+  <div id="ext-modal" class="modal-overlay">
+    <div class="modal-card ext-modal-card">
+      <div class="modal-header">
+        <h3>Panduan Memasang Ekstensi di Chrome / Edge</h3>
+        <button class="btn-close" id="btn-close-ext-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="guide-steps">
+          <div class="step-item">
+            <div class="step-num">1</div>
+            <div class="step-text">
+              <h4>Buka Halaman Ekstensi Browser</h4>
+              <p>Buka Chrome dan ketik <code>chrome://extensions</code> atau di Microsoft Edge ketik <code>edge://extensions</code> di address bar.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">2</div>
+            <div class="step-text">
+              <h4>Aktifkan Developer Mode (Mode Pengembang)</h4>
+              <p>Nyalakan tombol toggle <strong>"Developer mode"</strong> di pojok kanan atas halaman ekstensi.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">3</div>
+            <div class="step-text">
+              <h4>Klik "Load unpacked" (Muat yang belum dibongkar)</h4>
+              <p>Pilih folder berikut:</p>
+              <div class="path-box" id="ext-folder-path">
+                D:\DATA SAPRUDIN\APLIKASI\ANTIGRAFITY\APLIKASI WINDOWS 11\idm-downloader\extension
+              </div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">4</div>
+            <div class="step-text">
+              <h4>Selesai! Buka YouTube</h4>
+              <p>Buka sembarang video di YouTube, tombol hijau <strong>"Unduh Video Ini"</strong> akan otomatis melayang di atas video player dengan pilihan resolusi!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" id="btn-close-ext-guide">Mengerti & Siap</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

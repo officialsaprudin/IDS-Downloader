@@ -1,0 +1,16 @@
+# Binaries (>100MB exceeds GitHub limit)
+bin/*.exe
+!bin/.gitkeep
+
+# Temp downloads
+downloads/*
+!downloads/.gitkeep
+
+# System & OS
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Node
+node_modules/
+npm-debug.log

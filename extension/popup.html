@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>IDM Downloader</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <div class="popup-header">
+      <div class="logo">
+        <svg viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/></svg>
+        <span>IDM Bridge</span>
+      </div>
+      <span id="status-badge" class="badge checking">Memeriksa...</span>
+    </div>
+
+    <div class="popup-body">
+      <p class="description">
+        Ekstensi aktif. Tombol unduh otomatis muncul di atas video YouTube.
+      </p>
+
+      <div class="field-group">
+        <label>Unduh Tautan Cepat:</label>
+        <input type="text" id="quick-url" placeholder="https://youtube.com/watch?v=... atau URL file">
+      </div>
+
+      <div class="field-row">
+        <select id="quick-res">
+          <option value="1080p">1080p (Full HD)</option>
+          <option value="720p" selected>720p (HD)</option>
+          <option value="480p">480p</option>
+          <option value="360p">360p</option>
+          <option value="audio">Audio MP3</option>
+          <option value="best">Direct / Best</option>
+        </select>
+        <button id="btn-quick-download">Unduh</button>
+      </div>
+
+      <div id="result-msg" class="result-msg"></div>
+
+      <a id="btn-open-app" href="http://127.0.0.1:48912" target="_blank" class="app-link">
+        Buka Aplikasi IDM Desktop ↗
+      </a>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

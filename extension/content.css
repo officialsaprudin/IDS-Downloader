@@ -1,0 +1,161 @@
+/* IDM Floating Button and Dropdown Menu on YouTube */
+#idm-yt-floating-container {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  z-index: 2147483646;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  user-select: none;
+  direction: ltr;
+}
+
+#idm-yt-download-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: #ffffff;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.2);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+  outline: none;
+}
+
+#idm-yt-download-btn:hover {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+}
+
+#idm-yt-download-btn:active {
+  transform: translateY(1px);
+}
+
+#idm-yt-download-btn svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+#idm-yt-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 250px;
+  background: #18181b;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  padding: 8px;
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  backdrop-filter: blur(12px);
+  animation: idm-fade-in 0.15s ease-out;
+}
+
+#idm-yt-dropdown.show {
+  display: flex;
+}
+
+@keyframes idm-fade-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.idm-dropdown-header {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #a1a1aa;
+  letter-spacing: 0.5px;
+  padding: 4px 8px 6px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.idm-server-badge {
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: #27272a;
+  color: #71717a;
+}
+
+.idm-server-badge.online {
+  background: rgba(16, 185, 129, 0.2);
+  color: #34d399;
+}
+
+.idm-resolution-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+  border-radius: 6px;
+  color: #f4f4f5;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.idm-resolution-item:hover {
+  background: #27272a;
+  color: #10b981;
+}
+
+.idm-res-badge {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #d4d4d8;
+}
+
+.idm-resolution-item:hover .idm-res-badge {
+  background: #10b981;
+  color: #ffffff;
+}
+
+/* Toast notifications */
+.idm-toast-popup {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: #18181b;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  z-index: 2147483647;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(100px);
+  opacity: 0;
+  max-width: 380px;
+}
+
+.idm-toast-popup.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.idm-toast-popup.success {
+  border-left: 4px solid #10b981;
+}
+
+.idm-toast-popup.error {
+  border-left: 4px solid #ef4444;
+}
