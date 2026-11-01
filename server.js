@@ -68,10 +68,16 @@ function startYouTubeDownload(item) {
     '720p': 'bestvideo[height<=720]+bestaudio/best[height<=720]',
     '480p': 'bestvideo[height<=480]+bestaudio/best[height<=480]',
     '360p': 'bestvideo[height<=360]+bestaudio/best[height<=360]',
-    'audio': 'bestaudio/best'
+    'best': 'bestvideo+bestaudio/best'
   };
 
-  const chosenFormat = formatMap[item.resolution] || 'bestvideo+bestaudio/best';
+  const isAudio = item.resolution === 'audio' ||
+                  item.resolution === 'mp3' ||
+                  item.resolution === 'mp3-high' ||
+                  item.resolution === 'mp3-std' ||
+                  item.resolution === 'm4a' ||
+                  item.resolution === 'wav';
+
   const outTemplate = path.join(downloadDir, '%(title)s.%(ext)s');
 
   const args = [
@@ -82,9 +88,28 @@ function startYouTubeDownload(item) {
     item.url
   ];
 
-  if (item.resolution === 'audio') {
-    args.push('-x', '--audio-format', 'mp3');
+  if (isAudio) {
+    let audioFormat = 'mp3';
+    let quality = '0'; // best 320kbps
+
+    if (item.resolution === 'm4a') {
+      audioFormat = 'm4a';
+    } else if (item.resolution === 'wav') {
+      audioFormat = 'wav';
+    } else if (item.resolution === 'mp3-std') {
+      audioFormat = 'mp3';
+      quality = '5'; // 128kbps
+    } else {
+      audioFormat = 'mp3';
+      quality = '0';
+    }
+
+    args.push('-x', '--audio-format', audioFormat);
+    if (audioFormat === 'mp3') {
+      args.push('--audio-quality', quality);
+    }
   } else {
+    const chosenFormat = formatMap[item.resolution] || 'bestvideo+bestaudio/best';
     args.push('-f', chosenFormat, '--merge-output-format', 'mp4');
   }
 

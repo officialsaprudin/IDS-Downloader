@@ -105,7 +105,7 @@ function render() {
         <div class="card-header">
           <div class="file-info">
             <div class="file-icon">
-              ${item.resolution === 'audio' ? '🎵' : '🎬'}
+              ${['audio', 'mp3', 'mp3-high', 'mp3-std', 'm4a', 'wav'].includes(item.resolution) ? '🎵' : '🎬'}
             </div>
             <div class="file-titles">
               <div class="file-title" title="${escapeHtml(item.title || '')}">${escapeHtml(item.title || 'Video Unduhan')}</div>

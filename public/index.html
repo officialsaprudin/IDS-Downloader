@@ -107,14 +107,23 @@
           <input type="text" id="input-url" placeholder="https://www.youtube.com/watch?v=... atau https://example.com/file.zip">
         </div>
         <div class="form-group">
-          <label>Pilihan Resolusi / Kualitas:</label>
+          <label>Pilihan Format / Kualitas Unduhan:</label>
           <select id="select-res">
-            <option value="1080p">1080p Full HD (MP4)</option>
-            <option value="720p" selected>720p HD (MP4)</option>
-            <option value="480p">480p Standar (MP4)</option>
-            <option value="360p">360p Ringan (MP4)</option>
-            <option value="audio">Audio Only (MP3)</option>
-            <option value="best">Kualitas Tertinggi Otomatis</option>
+            <optgroup label="Video (MP4)">
+              <option value="1080p">1080p Full HD (MP4)</option>
+              <option value="720p" selected>720p HD (MP4)</option>
+              <option value="480p">480p Standar (MP4)</option>
+              <option value="360p">360p Ringan (MP4)</option>
+            </optgroup>
+            <optgroup label="Audio / Musik (MP3)">
+              <option value="mp3">Audio MP3 Kualitas Tinggi (320kbps)</option>
+              <option value="mp3-std">Audio MP3 Standar (128kbps)</option>
+              <option value="m4a">Audio M4A (Original AAC)</option>
+              <option value="wav">Audio WAV Lossless</option>
+            </optgroup>
+            <optgroup label="Lainnya">
+              <option value="best">Kualitas Tertinggi Otomatis</option>
+            </optgroup>
           </select>
         </div>
       </div>

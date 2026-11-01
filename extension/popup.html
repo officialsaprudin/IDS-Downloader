@@ -27,12 +27,21 @@
 
       <div class="field-row">
         <select id="quick-res">
-          <option value="1080p">1080p (Full HD)</option>
-          <option value="720p" selected>720p (HD)</option>
-          <option value="480p">480p</option>
-          <option value="360p">360p</option>
-          <option value="audio">Audio MP3</option>
-          <option value="best">Direct / Best</option>
+          <optgroup label="Video (MP4)">
+            <option value="1080p">1080p Full HD (MP4)</option>
+            <option value="720p" selected>720p HD (MP4)</option>
+            <option value="480p">480p Standar (MP4)</option>
+            <option value="360p">360p Ringan (MP4)</option>
+          </optgroup>
+          <optgroup label="Audio / Musik (MP3)">
+            <option value="mp3">Audio MP3 HQ (320kbps)</option>
+            <option value="mp3-std">Audio MP3 Standar (128kbps)</option>
+            <option value="m4a">Audio M4A (Original AAC)</option>
+            <option value="wav">Audio WAV Lossless</option>
+          </optgroup>
+          <optgroup label="Lainnya">
+            <option value="best">Kualitas Terbaik Otomatis</option>
+          </optgroup>
         </select>
         <button id="btn-quick-download">Unduh</button>
       </div>

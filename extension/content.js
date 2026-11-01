@@ -70,9 +70,10 @@
       </button>
       <div id="idm-yt-dropdown">
         <div class="idm-dropdown-header">
-          <span>PILIH RESOLUSI</span>
+          <span>PILIH FORMAT</span>
           <span class="idm-server-badge">Checking...</span>
         </div>
+        <div class="idm-dropdown-subheading">VIDEO (MP4)</div>
         <div class="idm-resolution-item" data-res="1080p">
           <span>🎬 1080p Full HD</span>
           <span class="idm-res-badge">MP4</span>
@@ -89,9 +90,22 @@
           <span>🎬 360p Ringan</span>
           <span class="idm-res-badge">MP4</span>
         </div>
-        <div class="idm-resolution-item" data-res="audio">
-          <span>🎵 Audio Musik</span>
-          <span class="idm-res-badge">MP3</span>
+        <div class="idm-dropdown-subheading">AUDIO / MUSIK (MP3)</div>
+        <div class="idm-resolution-item" data-res="mp3">
+          <span>🎵 Audio Kualitas Tinggi (320kbps)</span>
+          <span class="idm-res-badge audio">MP3</span>
+        </div>
+        <div class="idm-resolution-item" data-res="mp3-std">
+          <span>🎵 Audio Standar (128kbps)</span>
+          <span class="idm-res-badge audio">MP3</span>
+        </div>
+        <div class="idm-resolution-item" data-res="m4a">
+          <span>🎵 Audio AAC Asli YouTube</span>
+          <span class="idm-res-badge audio">M4A</span>
+        </div>
+        <div class="idm-resolution-item" data-res="wav">
+          <span>🎵 Audio Lossless</span>
+          <span class="idm-res-badge audio">WAV</span>
         </div>
       </div>
     `;
