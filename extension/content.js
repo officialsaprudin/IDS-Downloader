@@ -5,14 +5,15 @@
 
   async function checkServer() {
     try {
-      const res = await fetch(`${SERVER_URL}/api/status`, { method: 'GET' });
-      if (res.ok) {
-        isServerOnline = true;
-        updateBadge(true);
-      } else {
-        isServerOnline = false;
-        updateBadge(false);
-      }
+      chrome.runtime.sendMessage({ type: 'CHECK_STATUS' }, (res) => {
+        if (chrome.runtime.lastError || !res || !res.success) {
+          isServerOnline = false;
+          updateBadge(false);
+        } else {
+          isServerOnline = true;
+          updateBadge(true);
+        }
+      });
     } catch (e) {
       isServerOnline = false;
       updateBadge(false);
@@ -147,25 +148,18 @@
 
     showToast(`Mengirim ${resolution} ke aplikasi IDM...`);
 
-    try {
-      const response = await fetch(`${SERVER_URL}/api/download`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          url: videoUrl,
-          resolution: resolution,
-          title: title
-        })
-      });
+    const payload = { url: videoUrl, resolution, title };
 
-      const data = await response.json();
-      if (response.ok && data.success) {
-        showToast(`✅ Berhasil ditambahkan ke IDM! Resolusi: ${resolution}`, 'success');
-      } else {
-        showToast(`❌ Gagal: ${data.error || 'Server menolak permintaan'}`, 'error');
-      }
+    try {
+      chrome.runtime.sendMessage({ type: 'DOWNLOAD', payload }, (res) => {
+        if (chrome.runtime.lastError || !res || !res.success) {
+          showToast('⚠️ IDM Desktop belum berjalan! Buka start.bat terlebih dahulu.', 'error');
+        } else {
+          showToast(`✅ Berhasil ditambahkan ke IDM! Resolusi: ${resolution}`, 'success');
+        }
+      });
     } catch (err) {
-      showToast('⚠️ IDM Desktop belum berjalan! Buka aplikasi IDM terlebih dahulu.', 'error');
+      showToast('⚠️ IDM Desktop belum berjalan! Buka start.bat terlebih dahulu.', 'error');
     }
   }
 

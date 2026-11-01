@@ -1,14 +1,12 @@
 @echo off
-title IDM Downloader Desktop
+title IDM Downloader Pro - Desktop Server
 cd /d "%~dp0"
 
 echo ========================================================
-echo   Memulai IDM Downloader Desktop...
+echo   IDM Downloader Pro (Windows 11)
+echo   Server sedang berjalan di: http://127.0.0.1:48912
+echo   (Biarkan jendela ini tetap terbuka saat mengunduh)
 echo ========================================================
-
-start "" /b node server.js
-
-timeout /t 2 /nobreak >nul
 
 set EDGE_EXE="C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
 if exist %EDGE_EXE% (
@@ -17,4 +15,5 @@ if exist %EDGE_EXE% (
     start http://127.0.0.1:48912
 )
 
-echo Aplikasi sedang berjalan di http://127.0.0.1:48912
+node server.js
+pause
